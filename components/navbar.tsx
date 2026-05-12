@@ -23,7 +23,7 @@ const GITHUB_URL = "https://github.com/rahmanashis01/ONEPDF";
 export function Navbar() {
   return (
     <header className="glass fixed top-0 z-50 w-full">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
+      <div className="mx-auto flex h-16 max-w-4xl items-center justify-between gap-4 px-4">
         <Link
           href="/"
           className="flex items-center gap-1 rounded-md px-1 py-1 font-display text-2xl leading-none tracking-tight"

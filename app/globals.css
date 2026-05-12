@@ -135,6 +135,9 @@
   .gradient-brand {
     background-image: linear-gradient(100deg, #e11d74 0%, #a21caf 50%, #7c3aed 100%);
   }
+  .gradient-brand-violet {
+    background-image: linear-gradient(100deg, #8b5cf6 0%, #7c3aed 50%, #4f46e5 100%);
+  }
   .gradient-text {
     background-image: linear-gradient(100deg, #e11d74 0%, #a21caf 50%, #7c3aed 100%);
     -webkit-background-clip: text;
@@ -148,10 +151,47 @@
     backdrop-filter: saturate(180%) blur(18px);
     border-bottom: 1px solid color-mix(in oklab, black 8%, transparent);
   }
-  /* Subtle page wash */
+  /* Subtle page wash (used on non-hero sections). */
   .page-wash {
     background-image:
       radial-gradient(1200px 600px at 85% -10%, rgba(225, 29, 116, 0.08), transparent 60%),
       radial-gradient(900px 500px at 0% 10%, rgba(124, 58, 237, 0.08), transparent 60%);
   }
+  /* Pronounced hero backdrop — soft pastel gradient fading to white. */
+  .hero-wash {
+    background-image:
+      radial-gradient(1100px 520px at 85% 10%, rgba(225, 29, 116, 0.22), transparent 60%),
+      radial-gradient(900px 500px at 5% 20%, rgba(139, 92, 246, 0.20), transparent 60%),
+      linear-gradient(180deg, rgba(252, 231, 243, 0.55) 0%, rgba(255, 255, 255, 0.7) 40%, #ffffff 100%);
+  }
+  /* Gradient ring that appears on hover — rendered as a blurred glow behind the card. */
+  .card-glow-pink::before,
+  .card-glow-violet::before,
+  .card-glow-fuchsia::before,
+  .card-glow-amber::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--glow);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 250ms ease;
+    pointer-events: none;
+  }
+  .group:hover .card-glow-pink::before,
+  .group:hover .card-glow-violet::before,
+  .group:hover .card-glow-fuchsia::before,
+  .group:hover .card-glow-amber::before {
+    opacity: 1;
+  }
+  .card-glow-pink    { --glow: linear-gradient(120deg, #e11d74, #a21caf, #7c3aed); }
+  .card-glow-violet  { --glow: linear-gradient(120deg, #8b5cf6, #7c3aed, #4f46e5); }
+  .card-glow-fuchsia { --glow: linear-gradient(120deg, #d946ef, #c026d3, #a21caf); }
+  .card-glow-amber   { --glow: linear-gradient(120deg, #f59e0b, #f97316, #e11d48); }
 }

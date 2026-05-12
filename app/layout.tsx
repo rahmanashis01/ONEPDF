@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   title: 'onepdf — your PDFs never leave your browser',
   description:
     'Open-source, browser-only PDF toolkit. Merge, compress, and edit PDFs on your device — nothing uploaded, nothing tracked.',
+  icons: {
+    icon: '/favicon-logo.svg',
+    apple: '/favicon-logo.svg',
+  },
 }
 
 export default function RootLayout({

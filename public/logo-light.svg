@@ -1,0 +1,54 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="mainGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d946ef;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradientLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadowLight" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="400" fill="#ffffff"/>
+  
+  <!-- Main logo group -->
+  <g transform="translate(200, 200)" filter="url(#shadowLight)">
+    <!-- PDF Document - Diamond Shape -->
+    <polygon points="0,-100 100,0 0,100 -100,0" fill="url(#mainGradientLight)"/>
+    
+    <!-- Document shine/highlight -->
+    <polygon points="0,-100 100,0 0,-30 -100,0" fill="white" opacity="0.3"/>
+    
+    <!-- PDF Text -->
+    <text x="0" y="15" font-size="56" font-weight="900" fill="white" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing="2">PDF</text>
+    
+    <!-- Content lines -->
+    <line x1="-50" y1="45" x2="50" y2="45" stroke="white" stroke-width="4" opacity="0.8" stroke-linecap="round"/>
+    <line x1="-50" y1="65" x2="50" y2="65" stroke="white" stroke-width="4" opacity="0.8" stroke-linecap="round"/>
+    <line x1="-50" y1="85" x2="30" y2="85" stroke="white" stroke-width="4" opacity="0.8" stroke-linecap="round"/>
+    
+    <!-- Merge indicator (left) -->
+    <g opacity="0.9">
+      <circle cx="-120" cy="-40" r="18" fill="none" stroke="url(#accentGradientLight)" stroke-width="3"/>
+      <path d="M -120 -55 L -110 -45 L -120 -35 Z" fill="url(#accentGradientLight)"/>
+      <line x1="-120" y1="-40" x2="-95" y2="-40" stroke="url(#accentGradientLight)" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Compress indicator (right) -->
+    <g opacity="0.9">
+      <circle cx="120" cy="-40" r="18" fill="none" stroke="url(#accentGradientLight)" stroke-width="3"/>
+      <line x1="120" y1="-55" x2="120" y2="-25" stroke="url(#accentGradientLight)" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="105" y1="-40" x2="135" y2="-40" stroke="url(#accentGradientLight)" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </g>
+  
+  <!-- Brand text -->
+  <text x="200" y="360" font-size="32" font-weight="700" fill="#1e293b" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing="1">onepdf</text>
+</svg>

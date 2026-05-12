@@ -1,0 +1,49 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle (Vercel style) -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#000" stroke-width="2"/>
+  
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="pdfGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- PDF Document shape in Diamond -->
+  <g transform="translate(100, 100)">
+    <!-- Main diamond document -->
+    <polygon points="0,-45 45,0 0,45 -45,0" fill="url(#pdfGradient)" opacity="0.9"/>
+    
+    <!-- Document highlight/shine -->
+    <polygon points="0,-45 45,0 0,-15 -45,0" fill="white" opacity="0.2"/>
+    
+    <!-- PDF text on document -->
+    <text x="0" y="5" font-size="20" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial, sans-serif">PDF</text>
+    
+    <!-- Merge/Compress indicator lines -->
+    <line x1="-20" y1="15" x2="20" y2="15" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    <line x1="-20" y1="23" x2="20" y2="23" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    <line x1="-20" y1="31" x2="12" y2="31" stroke="white" stroke-width="1.5" opacity="0.6"/>
+    
+    <!-- Merge arrows (left side) -->
+    <g opacity="0.8">
+      <path d="M -55 -15 L -50 -10 L -50 -20 Z" fill="url(#accentGradient)"/>
+      <line x1="-55" y1="-15" x2="-45" y2="-15" stroke="url(#accentGradient)" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Compress indicator (right side) -->
+    <g opacity="0.8">
+      <circle cx="55" cy="-10" r="6" fill="none" stroke="url(#accentGradient)" stroke-width="1.5"/>
+      <line x1="55" y1="-16" x2="55" y2="-4" stroke="url(#accentGradient)" stroke-width="1"/>
+      <line x1="49" y1="-10" x2="61" y2="-10" stroke="url(#accentGradient)" stroke-width="1"/>
+    </g>
+  </g>
+  
+  <!-- Brand text below (optional) -->
+  <text x="100" y="185" font-size="14" font-weight="600" fill="#000" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing="1">onepdf</text>
+</svg>

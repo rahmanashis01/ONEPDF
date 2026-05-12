@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
+import { Geist, Instrument_Serif } from 'next/font/google'
 
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
@@ -9,11 +9,6 @@ import './globals.css'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
   subsets: ['latin'],
 })
 
@@ -37,13 +32,13 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className="dark">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
+          className={`${geistSans.variable} ${instrumentSerif.variable} antialiased`}
           suppressHydrationWarning
         >
           <Navbar />
-          <div className="pt-16">{children}</div>
+          <div className="pt-14">{children}</div>
           <Footer />
           <Toaster />
         </body>

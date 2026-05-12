@@ -93,6 +93,12 @@ export function MergeTool() {
   }, []);
 
   // Thumbnail queue — walks pending pages sequentially so large merges stay responsive.
+  //
+  // Dependencies intentionally use `state.pages.length` (not `state.pages`)
+  // so that thumb-ready dispatches — which change the array identity but not
+  // its length — do NOT re-run this effect. Re-running on every completion
+  // fires the cleanup (`cancelled = true`) and kills the in-flight loop after
+  // one tile, leaving later pages stuck on "Rendering…".
   const renderingRef = useRef(false);
   useEffect(() => {
     if (renderingRef.current) return;
@@ -139,7 +145,7 @@ export function MergeTool() {
     return () => {
       cancelled = true;
     };
-  }, [state.pages, state.sources]);
+  }, [state.pages.length, state.sources]);
 
   const handleFiles = useCallback(async (files: File[]) => {
     try {
@@ -190,6 +196,10 @@ export function MergeTool() {
 
   const handleDelete = useCallback((pageId: string) => {
     dispatch({ type: "delete", pageId });
+  }, []);
+
+  const handleDuplicate = useCallback((pageId: string) => {
+    dispatch({ type: "duplicate", pageId });
   }, []);
 
   const handleReorder = useCallback((from: number, to: number) => {
@@ -261,6 +271,7 @@ export function MergeTool() {
             sources={state.sources}
             onReorder={handleReorder}
             onDelete={handleDelete}
+            onDuplicate={handleDuplicate}
           />
         </section>
         <SummaryPanel

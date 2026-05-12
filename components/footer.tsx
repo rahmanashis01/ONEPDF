@@ -6,7 +6,7 @@ const GITHUB_URL = "https://github.com/rahmanashis01/ONEPDF";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t bg-muted/30">
+    <footer className="border-t border-white/5 bg-[#08080c]">
       <div className="mx-auto grid max-w-4xl gap-10 px-4 py-14 sm:grid-cols-2 md:grid-cols-4">
         <div className="flex flex-col gap-3">
           <Link
@@ -25,7 +25,7 @@ export function Footer() {
             target="_blank"
             rel="noreferrer noopener"
             title="github"
-            className="mt-1 inline-flex items-center gap-2 self-start rounded-full border bg-background px-3 py-1.5 text-xs font-medium text-foreground/80 transition-colors hover:bg-black/5"
+            className="mt-1 inline-flex items-center gap-2 self-start rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-foreground/80 transition-colors hover:bg-white/10"
           >
             <GithubIcon className="size-3.5" /> Star on GitHub
           </a>
@@ -82,7 +82,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t bg-background/60">
+      <div className="border-t border-white/5 bg-[#06060a]">
         <div className="mx-auto flex max-w-4xl items-center justify-center px-4 py-5 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} onepdf · open-source project.</p>
         </div>

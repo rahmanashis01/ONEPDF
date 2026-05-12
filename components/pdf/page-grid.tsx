@@ -25,6 +25,7 @@ export interface PageGridProps {
   sources: Map<string, Source>;
   onReorder: (from: number, to: number) => void;
   onDelete: (pageId: string) => void;
+  onDuplicate: (pageId: string) => void;
 }
 
 function SortablePageTile({
@@ -32,11 +33,13 @@ function SortablePageTile({
   sourceName,
   position,
   onDelete,
+  onDuplicate,
 }: {
   page: Page;
   sourceName: string;
   position: number;
   onDelete: (pageId: string) => void;
+  onDuplicate: (pageId: string) => void;
 }) {
   const {
     attributes,
@@ -59,6 +62,7 @@ function SortablePageTile({
         sourceName={sourceName}
         position={position}
         onDelete={onDelete}
+        onDuplicate={onDuplicate}
         isDragging={isDragging}
       />
     </div>
@@ -70,6 +74,7 @@ export function PageGrid({
   sources,
   onReorder,
   onDelete,
+  onDuplicate,
 }: PageGridProps) {
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -118,6 +123,7 @@ export function PageGrid({
                 sourceName={sourceName}
                 position={index + 1}
                 onDelete={onDelete}
+                onDuplicate={onDuplicate}
               />
             );
           })}

@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# kiro spec internal config
+.kiro/specs/**/.config.kiro

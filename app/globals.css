@@ -144,27 +144,27 @@
     background-clip: text;
     color: transparent;
   }
-  /* Dark glass navbar */
+  /* Dark glass — solid rgba so cross-browser backdrop-blur stays consistent. */
   .glass {
-    background-color: color-mix(in oklab, #0a0a0f 55%, transparent);
-    -webkit-backdrop-filter: saturate(180%) blur(18px);
-    backdrop-filter: saturate(180%) blur(18px);
-    border-bottom: 1px solid color-mix(in oklab, white 8%, transparent);
+    background-color: rgba(10, 10, 15, 0.72);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-color: rgba(255, 255, 255, 0.08);
   }
   /* Dark page wash — subtle radial glows on near-black. */
   .page-wash {
     background-color: #0a0a0f;
     background-image:
-      radial-gradient(1200px 600px at 85% -10%, rgba(225, 29, 116, 0.14), transparent 60%),
-      radial-gradient(900px 500px at 0% 10%, rgba(124, 58, 237, 0.14), transparent 60%);
+      radial-gradient(1200px 600px at 85% -10%, rgba(225, 29, 116, 0.10), transparent 60%),
+      radial-gradient(900px 500px at 0% 10%, rgba(124, 58, 237, 0.10), transparent 60%);
   }
-  /* Dark hero backdrop — pronounced pink/violet glows on near-black. */
+  /* Dark hero backdrop — softer glows so copy stays readable. */
   .hero-wash {
     background-color: #07070b;
     background-image:
-      radial-gradient(900px 500px at 85% 10%, rgba(225, 29, 116, 0.28), transparent 60%),
-      radial-gradient(800px 480px at 10% 30%, rgba(139, 92, 246, 0.26), transparent 60%),
-      radial-gradient(1400px 700px at 50% 110%, rgba(79, 70, 229, 0.20), transparent 60%),
+      radial-gradient(900px 500px at 85% 10%, rgba(225, 29, 116, 0.16), transparent 60%),
+      radial-gradient(800px 480px at 10% 30%, rgba(139, 92, 246, 0.16), transparent 60%),
+      radial-gradient(1400px 700px at 50% 110%, rgba(79, 70, 229, 0.12), transparent 60%),
       linear-gradient(180deg, #0a0a12 0%, #0a0a12 60%, #0a0a0f 100%);
   }
   /* Gradient ring that appears on hover — rendered as a border via masking. */

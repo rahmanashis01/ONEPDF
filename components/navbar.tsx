@@ -21,37 +21,37 @@ const GITHUB_URL = "https://github.com/rahmanashis01/ONEPDF";
 
 export function Navbar() {
   return (
-    <header className="glass fixed top-0 z-50 w-full">
-      <div className="mx-auto flex h-16 max-w-4xl items-center justify-between gap-4 px-4">
+    <header className="pointer-events-none fixed inset-x-0 top-3 z-50 flex justify-center px-3 sm:top-4">
+      <div className="glass pointer-events-auto flex h-12 w-full max-w-2xl items-center justify-between gap-2 rounded-full border px-3 shadow-lg shadow-black/30 sm:h-14 sm:px-4">
         <Link
           href="/"
-          className="flex items-center gap-1 rounded-md px-1 py-1 font-display text-2xl leading-none tracking-tight"
+          className="flex items-center gap-0.5 rounded-full px-2 py-1 font-display text-xl leading-none tracking-tight"
           aria-label="onepdf home"
         >
           <span>one</span>
           <span className="gradient-text">pdf</span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-0.5 md:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1.5 text-sm text-foreground/75 transition-colors hover:bg-white/5 hover:text-foreground"
+              className="rounded-full px-2.5 py-1.5 text-xs font-medium text-foreground/75 transition-colors hover:bg-white/5 hover:text-foreground"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <a
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer noopener"
             title="github"
             aria-label="github"
-            className="inline-flex size-9 items-center justify-center rounded-full text-foreground/75 transition-colors hover:bg-white/5 hover:text-foreground"
+            className="inline-flex size-8 items-center justify-center rounded-full text-foreground/75 transition-colors hover:bg-white/5 hover:text-foreground"
           >
             <GithubIcon className="size-4" />
           </a>
@@ -59,7 +59,7 @@ export function Navbar() {
             <SignInButton mode="modal">
               <button
                 type="button"
-                className="hidden h-9 items-center rounded-full px-3 text-sm font-medium text-foreground/80 transition-colors hover:bg-white/5 hover:text-foreground sm:inline-flex"
+                className="hidden h-8 items-center rounded-full px-3 text-xs font-medium text-foreground/80 transition-colors hover:bg-white/5 hover:text-foreground sm:inline-flex"
               >
                 Log in
               </button>
@@ -67,7 +67,7 @@ export function Navbar() {
             <SignUpButton mode="modal">
               <button
                 type="button"
-                className="gradient-brand inline-flex h-9 items-center rounded-full px-4 text-sm font-medium text-white shadow-sm shadow-fuchsia-500/30 transition-all hover:-translate-y-0.5 hover:brightness-110"
+                className="gradient-brand inline-flex h-8 items-center rounded-full px-3.5 text-xs font-medium text-white shadow-sm shadow-fuchsia-500/30 transition-all hover:-translate-y-0.5 hover:brightness-110"
               >
                 Register
               </button>

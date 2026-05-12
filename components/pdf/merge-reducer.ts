@@ -42,6 +42,7 @@ export type MergeAction =
   | { type: "thumb-error"; pageId: PageId }
   | { type: "reorder"; from: number; to: number }
   | { type: "delete"; pageId: PageId }
+  | { type: "duplicate"; pageId: PageId }
   | { type: "build-start" }
   | { type: "build-done" }
   | { type: "build-error"; message: string }
@@ -145,6 +146,27 @@ export function mergeReducer(
         }
       }
       return { ...state, pages, sources };
+    }
+    case "duplicate": {
+      const idx = state.pages.findIndex((p) => p.id === action.pageId);
+      if (idx < 0) return state;
+      const original = state.pages[idx];
+      // The clone gets a fresh id and re-renders its own thumbnail so that
+      // deleting either tile later can safely revoke its own object URL
+      // without stealing the thumbnail from the other.
+      const clone: Page = {
+        id: nanoid(10),
+        sourceId: original.sourceId,
+        sourcePageIndex: original.sourcePageIndex,
+        thumbUrl: null,
+        status: "pending",
+      };
+      const pages = [
+        ...state.pages.slice(0, idx + 1),
+        clone,
+        ...state.pages.slice(idx + 1),
+      ];
+      return { ...state, pages };
     }
     case "build-start":
       return { ...state, building: true, error: null };

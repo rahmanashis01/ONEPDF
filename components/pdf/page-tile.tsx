@@ -1,10 +1,9 @@
 "use client";
 
-import { ImageOff, Loader, Trash2 } from "lucide-react";
+import { ImageOff, Loader, Minus, Plus } from "lucide-react";
 import { forwardRef } from "react";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { Page } from "@/components/pdf/merge-reducer";
 
@@ -13,20 +12,32 @@ export interface PageTileProps extends React.HTMLAttributes<HTMLDivElement> {
   sourceName: string;
   position: number; // 1-based grid index
   onDelete: (pageId: string) => void;
+  onDuplicate: (pageId: string) => void;
   isDragging?: boolean;
 }
 
 export const PageTile = forwardRef<HTMLDivElement, PageTileProps>(
   function PageTile(
-    { page, sourceName, position, onDelete, isDragging, className, ...rest },
+    {
+      page,
+      sourceName,
+      position,
+      onDelete,
+      onDuplicate,
+      isDragging,
+      className,
+      ...rest
+    },
     ref,
   ) {
     return (
       <div
         ref={ref}
         className={cn(
-          "group relative flex flex-col overflow-hidden rounded-lg border bg-card shadow-sm transition-shadow",
-          isDragging ? "opacity-70 ring-2 ring-primary" : "hover:shadow",
+          "group/tile surface-dark relative flex flex-col overflow-hidden rounded-lg border shadow-sm transition-all",
+          isDragging
+            ? "opacity-70 ring-2 ring-fuchsia-400"
+            : "hover:-translate-y-0.5 hover:shadow-md hover:shadow-fuchsia-500/10",
           className,
         )}
         {...rest}
@@ -51,32 +62,47 @@ export const PageTile = forwardRef<HTMLDivElement, PageTileProps>(
               <span className="text-xs">Rendering…</span>
             </div>
           )}
+
           <Badge
             variant="secondary"
-            className="absolute top-1.5 left-1.5 bg-background/90"
+            className="absolute top-1.5 left-1.5 bg-background/85 backdrop-blur"
           >
             #{position}
           </Badge>
-          <Button
-            type="button"
-            variant="destructive"
-            size="icon-xs"
-            aria-label={`Remove page ${position}`}
-            className="absolute top-1.5 right-1.5 opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
-            onPointerDown={(event) => event.stopPropagation()}
-            onClick={(event) => {
-              event.stopPropagation();
-              onDelete(page.id);
-            }}
-          >
-            <Trash2 />
-          </Button>
+
+          {/* Top-right tile controls: + (duplicate) and − (delete).
+              Always visible so it's obvious they're interactive. */}
+          <div className="absolute top-1.5 right-1.5 flex gap-1.5">
+            <button
+              type="button"
+              aria-label={`Duplicate page ${position}`}
+              title="Duplicate page"
+              onPointerDown={(event) => event.stopPropagation()}
+              onClick={(event) => {
+                event.stopPropagation();
+                onDuplicate(page.id);
+              }}
+              className="flex size-7 items-center justify-center rounded-full bg-background/85 text-foreground shadow ring-1 ring-black/5 backdrop-blur transition hover:bg-emerald-500 hover:text-white hover:ring-emerald-500"
+            >
+              <Plus className="size-3.5" />
+            </button>
+            <button
+              type="button"
+              aria-label={`Remove page ${position}`}
+              title="Remove page"
+              onPointerDown={(event) => event.stopPropagation()}
+              onClick={(event) => {
+                event.stopPropagation();
+                onDelete(page.id);
+              }}
+              className="flex size-7 items-center justify-center rounded-full bg-background/85 text-foreground shadow ring-1 ring-black/5 backdrop-blur transition hover:bg-rose-500 hover:text-white hover:ring-rose-500"
+            >
+              <Minus className="size-3.5" />
+            </button>
+          </div>
         </div>
         <div className="flex flex-col gap-1 px-2 py-2">
-          <p
-            className="truncate text-xs font-medium"
-            title={sourceName}
-          >
+          <p className="truncate text-xs font-medium" title={sourceName}>
             {sourceName}
           </p>
           <div className="flex items-center justify-between text-[11px] text-muted-foreground">

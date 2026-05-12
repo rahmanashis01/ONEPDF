@@ -192,6 +192,10 @@ export function MergeTool() {
     dispatch({ type: "delete", pageId });
   }, []);
 
+  const handleDuplicate = useCallback((pageId: string) => {
+    dispatch({ type: "duplicate", pageId });
+  }, []);
+
   const handleReorder = useCallback((from: number, to: number) => {
     dispatch({ type: "reorder", from, to });
   }, []);
@@ -261,6 +265,7 @@ export function MergeTool() {
             sources={state.sources}
             onReorder={handleReorder}
             onDelete={handleDelete}
+            onDuplicate={handleDuplicate}
           />
         </section>
         <SummaryPanel

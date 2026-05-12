@@ -8,7 +8,6 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 
-import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/icons/github";
 
 const NAV_LINKS = [
@@ -38,7 +37,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1.5 text-sm text-foreground/80 transition-colors hover:bg-black/5 hover:text-foreground"
+              className="rounded-full px-3 py-1.5 text-sm text-foreground/75 transition-colors hover:bg-white/5 hover:text-foreground"
             >
               {link.label}
             </Link>
@@ -52,23 +51,26 @@ export function Navbar() {
             rel="noreferrer noopener"
             title="github"
             aria-label="github"
-            className="inline-flex size-9 items-center justify-center rounded-full text-foreground/80 transition-colors hover:bg-black/5 hover:text-foreground"
+            className="inline-flex size-9 items-center justify-center rounded-full text-foreground/75 transition-colors hover:bg-white/5 hover:text-foreground"
           >
             <GithubIcon className="size-4" />
           </a>
           <Show when="signed-out">
             <SignInButton mode="modal">
-              <Button variant="ghost" size="sm" className="hidden sm:inline-flex">
+              <button
+                type="button"
+                className="hidden h-9 items-center rounded-full px-3 text-sm font-medium text-foreground/80 transition-colors hover:bg-white/5 hover:text-foreground sm:inline-flex"
+              >
                 Log in
-              </Button>
+              </button>
             </SignInButton>
             <SignUpButton mode="modal">
-              <Button
-                size="sm"
-                className="gradient-brand rounded-full px-4 text-white shadow-sm shadow-primary/20 hover:brightness-105"
+              <button
+                type="button"
+                className="gradient-brand inline-flex h-9 items-center rounded-full px-4 text-sm font-medium text-white shadow-sm shadow-fuchsia-500/30 transition-all hover:-translate-y-0.5 hover:brightness-110"
               >
                 Register
-              </Button>
+              </button>
             </SignUpButton>
           </Show>
           <Show when="signed-in">
